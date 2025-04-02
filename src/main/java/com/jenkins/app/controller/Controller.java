@@ -15,4 +15,9 @@ public class Controller {
 	public String displayHome() {
 		return "Welcome to Home";
 	}
+	
+	@GetMapping("/dashboard")
+	public String dashboard() {
+		return "Welcome to Dashboard";
+	}
 }
