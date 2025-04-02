@@ -5,19 +5,19 @@ pipeline {
         maven 'mvn'
     }
     stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'master', url: 'https://github.com/Dhanushk8703/jenkins-learning.git'
+            }
+        }
         stage('Build Maven') {
             steps {
-                checkout scmGit(
-                    branches: [[name: '*/master']], 
-                    extensions: [], 
-                    userRemoteConfigs: [[url: 'https://github.com/Dhanushk8703/jenkins-learning.git']]
-                )
                 bat 'mvn clean install'
             }
         }
     }
     post {
-        failure { // Only send email on failure
+        failure {
             emailext(
                 to: '2k21csbs22@kiot.ac.in,2k21csbs20@kiot.ac.in,2k21csbs15@kiot.ac.in,2k21csbs27@kiot.ac.in',
                 subject: "Jenkins Build FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
