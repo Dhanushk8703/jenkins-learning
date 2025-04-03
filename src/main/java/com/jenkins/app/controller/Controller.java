@@ -20,4 +20,9 @@ public class Controller {
 	public String dashboard() {
 		return "Welcome to Dashboard";
 	}
+	
+	@GetMapping("/register")
+	public String register() {
+		return "register";
+	}
 }
