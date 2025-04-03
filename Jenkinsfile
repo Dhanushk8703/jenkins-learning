@@ -23,13 +23,15 @@ pipeline {
             }
         }
         
-        stage('Check Docker') {
-    steps {
-        bat 'echo %PATH%'
-        bat 'where docker'
-        bat 'docker --version'
-    }
-}
+ stage('Check Paths') {
+            steps {
+                bat 'echo %PATH%'
+                bat 'where cmd'
+                bat 'where docker'
+                bat 'where java'
+                bat 'where mvn'
+            }
+        }
 
         stage('Build Docker Image') {
             steps {
