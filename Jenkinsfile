@@ -12,7 +12,7 @@ pipeline {
                 checkout([$class: 'GitSCM', 
                     branches: [[name: 'master']], 
                     extensions: [], 
-                    userRemoteConfigs: [[url: 'https://github.com/Dhanushk8703/jenkins-learning']]
+                    userRemoteConfigs: [[url: 'https://github.com/Dhanushk8703/jenkins-learning.git']]
                 ])
             }
         }
@@ -22,6 +22,14 @@ pipeline {
                 bat 'mvn clean install'
             }
         }
+        
+        stage('Check Docker') {
+    steps {
+        bat 'echo %PATH%'
+        bat 'where docker'
+        bat 'docker --version'
+    }
+}
 
         stage('Build Docker Image') {
             steps {
