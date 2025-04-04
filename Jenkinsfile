@@ -22,16 +22,6 @@ pipeline {
                 bat 'mvn clean install'
             }
         }
-        
- stage('Check Paths') {
-            steps {
-                bat 'echo %PATH%'
-                bat 'where cmd'
-                bat 'where docker'
-                bat 'where java'
-                bat 'where mvn'
-            }
-        }
 
         stage('Build Docker Image') {
             steps {

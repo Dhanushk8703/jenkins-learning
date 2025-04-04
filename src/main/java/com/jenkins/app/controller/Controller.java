@@ -25,4 +25,9 @@ public class Controller {
 	public String register() {
 		return "register for the users";
 	}
+	
+	@GetMapping("/login")
+	public String login() {
+		return "register for the users";
+	}
 }
